@@ -1,0 +1,326 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <!-- 
+    Merhaba! Sitenizin ana sayfasını, gönderdiğiniz içerik ve talepleriniz doğrultusunda yeniden oluşturdum.
+    - Hero (karşılama) alanı dışındaki tüm görseller `<img>` etiketi ile değiştirildi.
+    - Görsel içeren kutulara (div) tıklandığında, görselin büyümesi (zoom) efekti eklendi.
+    - Lütfen aşağıdaki `src` yollarında belirtilen görselleri `public/images/` klasörüne eklediğinizden emin olun.
+      Örnek: public/images/hero-background.jpg
+  -->
+  <div
+    class="relative flex size-full min-h-screen flex-col bg-gray-50 justify-between group/design-root overflow-x-hidden"
+    style='font-family: "Public Sans", "Noto Sans", sans-serif;'
+  >
+    <div>
+      <!-- Header -->
+      <header class="flex items-center bg-gray-50 p-4 pb-2 justify-between">
+        <button id="menu-toggle" class="text-[#111418] flex size-12 shrink-0 items-center hover:bg-gray-100 rounded-lg transition-colors" data-icon="List" data-size="24px" data-weight="regular">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+            <path
+              d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"
+            ></path>
+          </svg>
+        </button>
+        <h2 class="text-[#111418] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Enes Bey</h2>
+        <div class="flex w-12 items-center justify-end">
+          <button
+            id="search-toggle"
+            class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 bg-transparent text-[#111418] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-gray-100 transition-colors"
+          >
+            <div class="text-[#111418]" data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </header>
+
+      <!-- Mobile Menu (Hidden by default) -->
+      <nav id="mobile-menu" class="hidden bg-white shadow-lg border-t border-gray-200 p-4">
+        <div class="flex flex-col space-y-3">
+          <a href="/" class="text-[#111418] text-base font-medium hover:text-blue-600 transition-colors">Ana Sayfa</a>
+          <a href="/blog" class="text-[#111418] text-base font-medium hover:text-blue-600 transition-colors">Blog</a>
+          <a href="/hizmetler" class="text-[#111418] text-base font-medium hover:text-blue-600 transition-colors">Hizmetler</a>
+          <a href="/hakkimizda" class="text-[#111418] text-base font-medium hover:text-blue-600 transition-colors">Hakkımızda</a>
+          <a href="/iletisim" class="text-[#111418] text-base font-medium hover:text-blue-600 transition-colors">İletişim</a>
+        </div>
+      </nav>
+      <div class="@container">
+        <div class="@[480px]:p-4">
+          <div
+            class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4"
+            style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("/images/hero-background.jpg");'
+          >
+            <div class="flex flex-col gap-2 text-center">
+              <h1
+                class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]"
+              >
+                Enes Bey
+              </h1>
+              <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">Avukat</h2>
+            </div>
+            <!-- Search Form -->
+            <form id="search-form" class="flex flex-col min-w-40 h-14 w-full max-w-[480px] @[480px]:h-16">
+              <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+                <div
+                  class="text-[#5e7387] flex border border-[#d5dbe2] bg-gray-50 items-center justify-center pl-[15px] rounded-l-xl border-r-0"
+                  data-icon="MagnifyingGlass"
+                  data-size="20px"
+                  data-weight="regular"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+                    ></path>
+                  </svg>
+                </div>
+                <input
+                  id="search-input"
+                  name="q"
+                  placeholder="Ara"
+                  class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border border-[#d5dbe2] bg-gray-50 focus:border-[#d5dbe2] h-full placeholder:text-[#5e7387] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal"
+                />
+                <div class="flex items-center justify-center rounded-r-xl border-l-0 border border-[#d5dbe2] bg-gray-50 pr-[7px]">
+                  <button
+                    type="submit"
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#b8cee4] text-[#111418] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] hover:bg-[#a5c1dc] transition-colors"
+                  >
+                    <span class="truncate">Ara</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Araştırma</h2>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+        <!-- Araştırma Kartı 1 -->
+        <div class="flex flex-col gap-3 pb-3">
+          <div class="image-container w-full bg-gray-200 aspect-square rounded-xl overflow-hidden cursor-pointer">
+            <img src="/images/ceza-hukuku.jpg" alt="Ceza Hukuku" class="w-full h-full object-cover transition-transform duration-300 ease-in-out">
+          </div>
+          <p class="text-[#111418] text-base font-medium leading-normal">Ceza Hukuku</p>
+        </div>
+        <!-- Araştırma Kartı 2 -->
+        <div class="flex flex-col gap-3 pb-3">
+          <div class="image-container w-full bg-gray-200 aspect-square rounded-xl overflow-hidden cursor-pointer">
+            <img src="/images/medeni-hukuk.jpg" alt="Medeni Hukuk" class="w-full h-full object-cover transition-transform duration-300 ease-in-out">
+          </div>
+          <p class="text-[#111418] text-base font-medium leading-normal">Medeni Hukuk</p>
+        </div>
+        <!-- Araştırma Kartı 3 -->
+        <div class="flex flex-col gap-3 pb-3">
+          <div class="image-container w-full bg-gray-200 aspect-square rounded-xl overflow-hidden cursor-pointer">
+            <img src="/images/idare-hukuku.jpg" alt="İdare Hukuku" class="w-full h-full object-cover transition-transform duration-300 ease-in-out">
+          </div>
+          <p class="text-[#111418] text-base font-medium leading-normal">İdare Hukuku</p>
+        </div>
+        <!-- Araştırma Kartı 4 -->
+        <div class="flex flex-col gap-3 pb-3">
+          <div class="image-container w-full bg-gray-200 aspect-square rounded-xl overflow-hidden cursor-pointer">
+            <img src="/images/anayasa-hukuku.jpg" alt="Anayasa Hukuku" class="w-full h-full object-cover transition-transform duration-300 ease-in-out">
+          </div>
+          <p class="text-[#111418] text-base font-medium leading-normal">Anayasa Hukuku</p>
+        </div>
+      </div>
+      <h2 class="text-[#111418] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Blog</h2>
+      <!-- Blog Yazısı 1 -->
+      <div class="p-4">
+        <div class="flex items-stretch justify-between gap-4 rounded-xl">
+          <div class="flex flex-col gap-1 flex-[2_2_0px]">
+            <p class="text-[#5e7387] text-sm font-normal leading-normal">5 dakikalık okuma</p>
+            <p class="text-[#111418] text-base font-bold leading-tight">Yeni Ceza Hukuku Reformları</p>
+            <p class="text-[#5e7387] text-sm font-normal leading-normal">
+              Ceza hukuku alanındaki son değişiklikler ve bunların davalarınızı nasıl etkileyebileceği hakkında bilgi edinin.
+            </p>
+          </div>
+          <div class="image-container w-full bg-gray-200 rounded-xl overflow-hidden cursor-pointer flex-1">
+            <img src="/images/blog-1.jpg" alt="Yeni Ceza Hukuku Reformları" class="w-full h-full object-cover transition-transform duration-300 ease-in-out">
+          </div>
+        </div>
+      </div>
+      <!-- Blog Yazısı 2 -->
+      <div class="p-4">
+        <div class="flex items-stretch justify-between gap-4 rounded-xl">
+          <div class="flex flex-col gap-1 flex-[2_2_0px]">
+            <p class="text-[#5e7387] text-sm font-normal leading-normal">7 dakikalık okuma</p>
+            <p class="text-[#111418] text-base font-bold leading-tight">Boşanma Davalarında Haklarınız</p>
+            <p class="text-[#5e7387] text-sm font-normal leading-normal">Boşanma sürecinde haklarınızı ve nafaka, velayet gibi konuların nasıl çözüldüğünü öğrenin.</p>
+          </div>
+          <div class="image-container w-full bg-gray-200 rounded-xl overflow-hidden cursor-pointer flex-1">
+            <img src="/images/blog-2.jpg" alt="Boşanma Davalarında Haklarınız" class="w-full h-full object-cover transition-transform duration-300 ease-in-out">
+          </div>
+        </div>
+      </div>
+      <!-- Blog Yazısı 3 -->
+      <div class="p-4">
+        <div class="flex items-stretch justify-between gap-4 rounded-xl">
+          <div class="flex flex-col gap-1 flex-[2_2_0px]">
+            <p class="text-[#5e7387] text-sm font-normal leading-normal">6 dakikalık okuma</p>
+            <p class="text-[#111418] text-base font-bold leading-tight">Gayrimenkul Hukuku ve Yatırım</p>
+            <p class="text-[#5e7387] text-sm font-normal leading-normal">Gayrimenkul yatırımları ve hukuki süreçler hakkında bilmeniz gereken her şeyi keşfedin.</p>
+          </div>
+          <div class="image-container w-full bg-gray-200 rounded-xl overflow-hidden cursor-pointer flex-1">
+            <img src="/images/blog-3.jpg" alt="Gayrimenkul Hukuku ve Yatırım" class="w-full h-full object-cover transition-transform duration-300 ease-in-out">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <!-- Modern Footer -->
+      <footer class="bg-gradient-to-r from-gray-800 to-gray-900 text-white">
+        <div class="max-w-6xl mx-auto px-6 py-12">
+          <!-- Footer Content -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <!-- Logo & Description -->
+            <div class="md:col-span-2">
+              <h3 class="text-2xl font-bold mb-4">Enes Bey</h3>
+              <p class="text-gray-300 mb-4 leading-relaxed">
+                Hukuk alanında uzman avukatlık hizmetleri. Ceza, medeni, idare ve anayasa hukuku konularında profesyonel danışmanlık.
+              </p>
+              <div class="flex space-x-4">
+                <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                  </svg>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                  </svg>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-white transition-colors">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Hızlı Linkler</h4>
+              <ul class="space-y-2">
+                <li><a href="/" class="text-gray-300 hover:text-white transition-colors">Ana Sayfa</a></li>
+                <li><a href="/hakkimizda" class="text-gray-300 hover:text-white transition-colors">Hakkımızda</a></li>
+                <li><a href="/hizmetler" class="text-gray-300 hover:text-white transition-colors">Hizmetler</a></li>
+                <li><a href="/blog" class="text-gray-300 hover:text-white transition-colors">Blog</a></li>
+              </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+              <h4 class="text-lg font-semibold mb-4">İletişim</h4>
+              <ul class="space-y-2 text-gray-300">
+                <li class="flex items-center">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                  </svg>
+                  info@enesbey.com
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                  </svg>
+                  +90 (555) 123 45 67
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                  </svg>
+                  İstanbul, Türkiye
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bottom Bar -->
+          <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm">
+              © 2024 Enes Bey. Tüm hakları saklıdır.
+            </p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+              <a href="/gizlilik" class="text-gray-400 hover:text-white text-sm transition-colors">Gizlilik Politikası</a>
+              <a href="/kullanim-kosullari" class="text-gray-400 hover:text-white text-sm transition-colors">Kullanım Koşulları</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <div class="h-5 bg-gray-50"></div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .image-container img.zoomed {
+    transform: scale(1.2);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Image zoom functionality
+    const imageContainers = document.querySelectorAll('.image-container');
+    imageContainers.forEach(container => {
+      container.addEventListener('click', () => {
+        const img = container.querySelector('img');
+        if (img) {
+          img.classList.toggle('zoomed');
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    // Search functionality
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+    const searchToggle = document.getElementById('search-toggle');
+
+    if (searchForm && searchInput) {
+      searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const query = searchInput.value.trim();
+        if (query) {
+          // Redirect to search results page
+          window.location.href = `/arama?q=${encodeURIComponent(query)}`;
+        }
+      });
+    }
+
+    // Focus search input when search button is clicked
+    if (searchToggle && searchInput) {
+      searchToggle.addEventListener('click', () => {
+        searchInput.focus();
+      });
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,42 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="tr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Fonts -->
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com/"
+			crossorigin=""
+		/>
+		<link
+			rel="stylesheet"
+			as="style"
+			onload="this.rel='stylesheet'"
+			href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&family=Public+Sans%3Awght%40400%3B500%3B700%3B900"
+		/>
+
+		<!-- Tailwind CSS via CDN -->
+
+		<title>Enes Bey - Avukat</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>
