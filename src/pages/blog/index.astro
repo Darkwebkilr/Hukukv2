@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
 
 const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -20,96 +22,82 @@ function getReadingTime(readingTime?: number) {
 
 <Layout>
   <div class="min-h-screen bg-gray-50" style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
-    <!-- Header -->
-    <header class="bg-white shadow-sm">
-      <div class="max-w-6xl mx-auto px-4 py-6">
-        <div class="flex items-center justify-between">
-          <a href="/" class="text-2xl font-bold text-gray-900">Enes Bey</a>
-          <nav class="hidden md:flex space-x-8">
-            <a href="/" class="text-gray-600 hover:text-gray-900 transition-colors">Ana Sayfa</a>
-            <a href="/blog" class="text-blue-600 font-medium">Blog</a>
-            <a href="/hizmetler" class="text-gray-600 hover:text-gray-900 transition-colors">Hizmetler</a>
-            <a href="/hakkimizda" class="text-gray-600 hover:text-gray-900 transition-colors">Hakkımızda</a>
-            <a href="/iletisim" class="text-gray-600 hover:text-gray-900 transition-colors">İletişim</a>
-          </nav>
-        </div>
-      </div>
-    </header>
+    <Header />
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
       <div class="max-w-6xl mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Hukuk Blog</h1>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
         <p class="text-xl text-blue-100 max-w-2xl mx-auto">
-          Hukuk dünyasından güncel gelişmeler, pratik bilgiler ve uzman görüşleri
+          Hukuk dünyasından güncel gelişmeler, pratik bilgiler ve görüşlerimi paylaşıyorum.
         </p>
       </div>
     </section>
 
     <!-- Blog Posts -->
     <main class="max-w-6xl mx-auto px-4 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {sortedPosts.map((post) => (
-          <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-            {post.data.heroImage && (
-              <div class="aspect-video overflow-hidden">
-                <img 
-                  src={post.data.heroImage} 
-                  alt={post.data.title}
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            )}
-            
-            <div class="p-6">
-              <!-- Category & Reading Time -->
-              <div class="flex items-center justify-between mb-3">
-                <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-600 bg-blue-100 rounded-full">
-                  {post.data.category.replace('-', ' ').toUpperCase()}
-                </span>
-                <span class="text-sm text-gray-500">
-                  {getReadingTime(post.data.readingTime)}
-                </span>
-              </div>
-
-              <!-- Title -->
-              <h2 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
-                <a href={`/blog/${post.slug}`} class="hover:text-blue-600 transition-colors">
-                  {post.data.title}
-                </a>
-              </h2>
-
-              <!-- Description -->
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                {post.data.description}
-              </p>
-
-              <!-- Meta Info -->
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-2">
-                  <span>{post.data.author}</span>
-                  <span>•</span>
-                  <time>{formatDate(post.data.pubDate)}</time>
-                </div>
-                {post.data.featured && (
-                  <span class="inline-block px-2 py-1 text-xs font-semibold text-yellow-600 bg-yellow-100 rounded">
-                    Öne Çıkan
-                  </span>
-                )}
-              </div>
-
-              <!-- Tags -->
-              {post.data.tags.length > 0 && (
-                <div class="mt-4 flex flex-wrap gap-2">
-                  {post.data.tags.slice(0, 3).map((tag) => (
-                    <span class="inline-block px-2 py-1 text-xs text-gray-600 bg-gray-100 rounded">
-                      #{tag}
-                    </span>
-                  ))}
+          <a href={`/blog/${post.slug}`} class="block hover:text-blue-600 transition-colors group">
+            <article class="bg-white rounded-xl shadow-lg overflow-hidden h-full group-hover:shadow-xl transition-shadow">
+              {post.data.heroImage && (
+                <div class="aspect-video overflow-hidden">
+                  <img 
+                    src={post.data.heroImage} 
+                    alt={post.data.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
               )}
-            </div>
-          </article>
+              
+              <div class="p-6 flex flex-col">
+                <!-- Category & Reading Time -->
+                <div class="flex items-center justify-between mb-3">
+                  <span class="inline-block px-3 py-1 text-xs font-semibold text-blue-600 bg-blue-100 rounded-full">
+                    {post.data.category.replace('-', ' ').toUpperCase()}
+                  </span>
+                  <span class="text-sm text-gray-500">
+                    {getReadingTime(post.data.readingTime)}
+                  </span>
+                </div>
+
+                <!-- Title -->
+                <h2 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                    {post.data.title}
+                </h2>
+
+                <!-- Description -->
+                <p class="text-gray-600 mb-4 line-clamp-3">
+                  {post.data.description}
+                </p>
+
+                <!-- Meta Info -->
+                <div class="flex items-center justify-between text-sm text-gray-500 mt-auto">
+                  <div class="flex items-center space-x-2">
+                    <span>{post.data.author}</span>
+                    <span>•</span>
+                    <time>{formatDate(post.data.pubDate)}</time>
+                  </div>
+                  {post.data.featured && (
+                    <span class="inline-block px-2 py-1 text-xs font-semibold text-yellow-600 bg-yellow-100 rounded">
+                      Öne Çıkan
+                    </span>
+                  )}
+                </div>
+
+                <!-- Tags -->
+                {post.data.tags.length > 0 && (
+                  <div class="mt-4 flex flex-wrap gap-2">
+                    {post.data.tags.slice(0, 3).map((tag) => (
+                      <span class="inline-block px-2 py-1 text-xs text-gray-600 bg-gray-100 rounded">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </article>
+          </a>
         ))}
       </div>
 
@@ -143,6 +131,7 @@ function getReadingTime(readingTime?: number) {
         </form>
       </div>
     </section>
+    <Footer />
   </div>
 </Layout>
 

@@ -1,0 +1,34 @@
+backend:
+  name: github
+  repo: kullanici-adiniz/repo-adiniz # ÖNEMLİ: Burayı kendi GitHub bilgilerinizle değiştirin
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "blog"
+    label: "Blog Yazıları"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Başlık", name: "title", widget: "string" }
+      - { label: "Açıklama", name: "description", widget: "text" }
+      - { label: "Yayın Tarihi", name: "pubDate", widget: "datetime" }
+      - { label: "Kapak Fotoğrafı", name: "heroImage", widget: "image", required: false }
+      - { label: "Kategori", name: "category", widget: "select", options: ["ceza-hukuku", "medeni-hukuk", "idare-hukuku", "anayasa-hukuku", "genel"] }
+      - { label: "İçerik", name: "body", widget: "markdown" }
+
+  - name: "arastirmalar"
+    label: "Araştırmalar"
+    folder: "src/content/arastirmalar"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Başlık", name: "title", widget: "string" }
+      - { label: "Açıklama", name: "description", widget: "text" }
+      - { label: "Yayın Tarihi", name: "pubDate", widget: "datetime" }
+      - { label: "Kapak Fotoğrafı", name: "heroImage", widget: "image", required: false }
+      - { label: "Kategori", name: "category", widget: "select", options: ["ceza-hukuku", "medeni-hukuk", "idare-hukuku", "anayasa-hukuku", "genel"] }
+      - { label: "İçerik", name: "body", widget: "markdown" }
