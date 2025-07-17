@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: kullanici-adiniz/repo-adiniz # ÖNEMLİ: Burayı kendi GitHub bilgilerinizle değiştirin
+  repo: Darkwebkilr/Hukukv2 # ÖNEMLİ: Burayı kendi GitHub bilgilerinizle değiştirin
   branch: main
 
 media_folder: "public/images"
