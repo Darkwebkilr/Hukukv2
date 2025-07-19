@@ -2,9 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+const pageTitle = "Ana Sayfa";
+const pageDescription = "Kırklareli Üniversitesi Hukuk Fakültesi öğrencisi Enes Sevinç'in kişisel web sitesi. Ceza ve özel hukuk alanlarındaki blog yazılarını ve araştırmalarını keşfedin.";
 ---
 
-<Layout>
+<Layout title={pageTitle} description={pageDescription}>
   <!-- 
     Merhaba! Sitenizin ana sayfasını, gönderdiğiniz içerik ve talepleriniz doğrultusunda yeniden oluşturdum.
     - Hero (karşılama) alanı dışındaki tüm görseller `<img>` etiketi ile değiştirildi.
@@ -117,7 +120,7 @@ import Footer from '../components/Footer.astro';
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <!-- Sol Taraf: Yazı -->
           <div class="md:col-span-2">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Avukat Enes Sevinç</h2>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Enes Sevinç</h2>
             <p class="text-gray-700 leading-relaxed mb-6">
               Kırklareli Üniversitesi Hukuk Fakültesi öğrencisi olarak, ceza ve özel hukuk alanlarına duyduğum özel ilgiyle teorik bilgimi pratikle birleştiriyorum. Takım çalışmasına yatkın, araştırmayı seven ve sorumluluk almaktan çekinmeyen bir yaklaşımla müvekkillerime en iyi hizmeti sunmayı hedefliyorum.
             </p>
@@ -127,7 +130,7 @@ import Footer from '../components/Footer.astro';
           </div>
           <!-- Sağ Taraf: Fotoğraf -->
           <div class="flex justify-center">
-            <img src="/images/profil-foto.jpg" alt="Avukat Enes Sevinç" class="w-48 h-48 object-cover rounded-full shadow-md">
+            <img src="/images/profil-foto.jpg" alt="Enes Sevinç" class="w-48 h-48 object-cover rounded-full shadow-md">
           </div>
         </div>
       </section>
